@@ -10,9 +10,9 @@ import HeaderPage from "./components/Layout/HeaderPage";
 // import VerifyEmail from "./components/Layout/VerifyEmail";
 import Home from "./components/Pages/Home";
 import LoginAuth from "./components/Pages/LoginAuth";
-import Compose from "./components/Pages/Profile";
-import Inbox from "./components/Pages/Inbox";
-import SentMails from "./components/Pages/SentMails";
+import Compose from "./components/mail/Compose";
+import Inbox from "./components/mail/Inbox";
+import SentMails from "./components/mail/SentMails";
 
 
 

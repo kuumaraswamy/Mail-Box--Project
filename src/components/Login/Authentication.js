@@ -1,7 +1,7 @@
 
 import React,{Fragment} from 'react'
 import { useDispatch } from "react-redux";
-import { authAction } from "../../Store/auth-reducer";
+import { authActions } from "../../Store/auth-reducer";
 
 import FormComponent from './FormComponent'
 import { useHistory } from "react-router-dom";
@@ -74,7 +74,7 @@ const Authentication = () => {
         })
         .then((data) => {
           const loginObj={idToken: data.idToken, email: data.email}
-           dispatch(authAction.login(loginObj))
+           dispatch(authActions.login(loginObj))
             console.log(data);
             console.log('successfully loggedIn');
             history.push('/Home');
