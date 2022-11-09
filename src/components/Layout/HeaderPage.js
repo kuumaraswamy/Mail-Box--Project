@@ -34,9 +34,7 @@ const HeaderPage = () => {
             </div>
         <Text p={4} fontWeight='bold' color="black" fontFamily= "'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif"><h1>Welcome To Mail Box !!</h1></Text>
         <Box mx='auto' />
-        {/* <Link variant='nav' to={'./Home'}>
         
-        </Link> */}
           {!isLogin && <button  mr={50} className={classes.button} onClick={()=>history.push('./Home')} > Home </button>}
           { !isLogin &&<button  mr={50} className={classes.button} onClick={()=>history.push('./LoginAuth')} > Login </button>}
           {isLogin && <button  mr={50} className={classes.button} onClick={()=>history.push('./Home')} > Home </button>}
@@ -49,7 +47,7 @@ const HeaderPage = () => {
       </Flex> 
     
 
-      {/* <ProfileForm></ProfileForm> */}
+    
      
     </div>
   )

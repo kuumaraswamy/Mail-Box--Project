@@ -1,18 +1,14 @@
-// import logo from "./logo.svg";
+
 import React,{Fragment} from "react";
 import {Switch,Route} from "react-router-dom"
 import "./App.css";
-// import Authentication from "./components/Login/Authentication";
-import { useSelector } from "react-redux";
-// import AuthContext from "./Store/auth-context";
+import { useSelector } from "react-redux"
 import HeaderPage from "./components/Layout/HeaderPage";
-// import ProfileForm from "./components/Layout/ProfileForm";
-// import VerifyEmail from "./components/Layout/VerifyEmail";
 import Home from "./components/Pages/Home";
 import LoginAuth from "./components/Pages/LoginAuth";
-import Compose from "./components/mail/Compose";
 import Inbox from "./components/mail/Inbox";
 import SentMails from "./components/mail/SentMails";
+import ComposeMail from "./components/mail/ComposeMail";
 
 
 
@@ -45,8 +41,8 @@ function App() {
               {isLogin && <Home/>}
             </Route> 
 
-            <Route path="/Compose" component={Compose}>  
-            {isLogin && <Compose/>}
+            <Route path="/Compose" component={ComposeMail}>  
+            {isLogin && <ComposeMail/>}
             </Route>
 
             <Route path="/Inbox" component={Inbox}>

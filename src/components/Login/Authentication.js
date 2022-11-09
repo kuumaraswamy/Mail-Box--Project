@@ -13,7 +13,7 @@ const Authentication = () => {
     // const authCntx = useContext(AuthContext);
     const SignUpHandler = (email, password) => {
          fetch(
-                'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyAtKiPgxUqIRvYCh_r31wlNnUDTunA-T2M',
+                'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyA4Z077BTXw7549lenTtBiumBbEGRspF5g',
                 {
                     method: 'POST',
                     body: JSON.stringify({
@@ -49,7 +49,7 @@ const Authentication = () => {
     const LoginHandler = (email, password) => {
      
         fetch(
-            'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAtKiPgxUqIRvYCh_r31wlNnUDTunA-T2M',
+            'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyA4Z077BTXw7549lenTtBiumBbEGRspF5g',
             {
                 method: 'POST',
                 body: JSON.stringify({
