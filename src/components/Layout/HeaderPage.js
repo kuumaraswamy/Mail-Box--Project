@@ -6,7 +6,6 @@ import { Flex,Text,Box,button} from 'rebass'
 // import AuthContext from '../../Store/auth-context'
 import classes from "./HeaderPage.module.css"
 import logo from '../../email.png'
-import { Badge } from 'antd';
 
 
 
@@ -14,26 +13,32 @@ import { Badge } from 'antd';
 
 const HeaderPage = () => {
   const isLogin = useSelector((state) => state.authentication.isLogin)
-  const inboxMails = useSelector(state => state.compose.fetchMail);
-  const [unreadCount, setUnreadCount] = useState(0);
-    console.log(isLogin, "in header");
+  const inboxMails = useSelector((state) => state.compose.fetchMail);
+  
+    // console.log(isLogin, "in header");
     const dispatch = useDispatch()
+    const history = useHistory();
+    const [unreadCount, setUnreadCount] = useState(0);
 
-  //  const authCntx = useContext(AuthContext)
-   const history = useHistory();
   const logoutHandler = () =>{
     dispatch(authActions.logout());
   }
 
   useEffect(() => {
     if (inboxMails) {
+      let count = 0;
       // eslint-disable-next-line
       Object.keys(inboxMails).map((mail) => {
             if (inboxMails[mail].read === false) {
-          setUnreadCount(unreadCount + 1);
+                count = count + 1;
+              console.log(count);
+              setUnreadCount(count);
         }
+        
       });
+      
     }
+    
   // eslint-disable-next-line
   }, [inboxMails]);
   
@@ -58,11 +63,11 @@ const HeaderPage = () => {
           {isLogin && <button  mr={50} className={classes.button} onClick={()=>history.push('./Home')} > Home </button>}
            {isLogin && <button mr={50} className={classes.button}onClick={()=>history.push('./Compose')}> Compose </button>}
            { isLogin && <button mr={50} className={classes.button} onClick={()=>history.push('./Inbox')}> Inbox 
-                      {unreadCount === 0 ? (
-                                <></>
-                              ) : (
-                                <span>{unreadCount} Unread</span>
-                              )}
+                  {unreadCount === 0 ? (
+                            <></>
+                          ) : (
+                            <span>{unreadCount} Unread</span>
+                          )}
                   </button>
                   }
            { isLogin && <button mr={50} className={classes.button} onClick={()=>history.push('./SentMails')}> Sent Mails </button>}
@@ -70,20 +75,6 @@ const HeaderPage = () => {
          
       </Flex> 
 
-      
-      {/* <div ng-controller="PortalController" className={classes.header}>
-          <header>
-      
-          
-             <button  mr={50} className={classes.button} onClick={()=>history.push('./Home')} > Home </button>
-             <button  mr={50} className={classes.button} onClick={()=>history.push('./Home')} > Compose </button>
-             <button  mr={50} className={classes.button} onClick={()=>history.push('./Home')} >Inbox </button>
-             <button  mr={50} className={classes.button} onClick={()=>history.push('./Home')} > SentMails </button>
-             <button  mr={50} className={classes.button} onClick={()=>history.push('./Home')} > LogOut</button>
-              
-              
-          </header>
-     </div> */}
       
 
     </div>

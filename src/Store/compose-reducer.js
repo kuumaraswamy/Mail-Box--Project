@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialComposeState = {
-    ComposeMail: '',
+    composeMail: '',
     fetchMail: {}
 }
 
@@ -9,14 +9,14 @@ const ComposeSlice = createSlice({
     name: 'compose',
     initialState: initialComposeState,
     reducers: {
-        ComposeMail(state, action){
+        composeMail(state, action){
             state.composeMail = action.payload.userMail
         },
         fetchMail(state, action){
             state.fetchMail = action.payload
         },
         ReadMail(state, action){
-            state.fetchMail[action.payload].read = true
+            state.fetchMail[action.payload].read = false
         },
         sentMail(state, action){
             state.fetchMail = action.payload

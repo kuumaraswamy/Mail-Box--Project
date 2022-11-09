@@ -7,7 +7,7 @@ import HeaderPage from "./components/Layout/HeaderPage";
 import Home from "./components/Pages/Home";
 import LoginAuth from "./components/Pages/LoginAuth";
 import Inbox from "./components/mail/Inbox";
-import SentMails from "./components/mail/SentMails";
+import Sent from "./components/mail/Sent";
 import ComposeMail from "./components/mail/ComposeMail";
 import SingleMail from "./components/mail/SingleMail";
 
@@ -51,12 +51,12 @@ function App() {
             </Route>
              
              
-             <Route path="/sentMails" component={SentMails}>
-             {isLogin && <SentMails/>}
-             </Route>
-
              <Route path="/SingleMail" component={SingleMail}>
              {isLogin && <SingleMail/>}
+             </Route>
+
+             <Route path="/sentMails" component={Sent}>
+             {isLogin && <Sent/>}
              </Route>
 
         </Switch>    

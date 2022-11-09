@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { composeActions } from '../../Store/compose-reducer';
 import classes from './Inbox.module.css';
 import SingleMail from './SingleMail';
@@ -27,7 +26,10 @@ const Inbox = () => {
     }
 
     useEffect(() => {
-        fetchMails();
+        setInterval(() => {
+            fetchMails();
+            console.log('called');
+        }, 2000)
         // eslint-disable-next-line
     }, []);
 
@@ -39,7 +41,7 @@ const Inbox = () => {
         console.log(mail);
         try {
             const res = await axios.delete(
-            `hhttps://mail-box-ef030-default-rtdb.firebaseio.com/${userMail}/${mail}.json`
+            `https://mail-box-ef030-default-rtdb.firebaseio.com/${userMail}/${mail}.json`
             );
             console.log(res);
             fetchMails();
@@ -53,7 +55,7 @@ const Inbox = () => {
             <h1>Received Mails</h1>
             <div>
                 <ul>
-                    {!singleMail && mails &&
+                    {!singleMail && mails!== null &&
                         Object.keys(mails).map((mail) => {
                             let read = false;
                             if(mails[mail].read !== false){
@@ -61,16 +63,15 @@ const Inbox = () => {
                             }
                             return (
                                 <div key={mail.toString()}>
-                                    <Link 
-                                        onClick={() =>singleMailHandler(mail)}
-                                        to='/single-mail-details'>
+                                    <div
+                                        onClick={() =>singleMailHandler(mail)}>
                                         <li
                                             style={{ 
                                                 listStyleType: read ? 'none' : 'disc',color: read ? 'black' : 'blue'
                                                 }}>
-                                            <span>From: {mails[mail].from}</span><br />
+                                            <span>From: {mails[mail].from}</span>
                                         </li> 
-                                    </Link>  
+                                    </div>  
                                     <button
                                         onClick={() => deleteHandler(mail)}>
                                         Delete
@@ -80,8 +81,10 @@ const Inbox = () => {
                             )
                         })
                     }
-                    {singleMail && <SingleMail mailDetails={{singleMail, mails}} />}
-                    {mails === null && <p>No emails found</p>}
+                    {singleMail && (
+                        <SingleMail mailDetails={{singleMail, mails}} />
+                        )}
+                    {mails === null && <p>No mails found</p>}
                 </ul>
             </div>
         </section>

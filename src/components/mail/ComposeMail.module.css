@@ -1,6 +1,13 @@
 .compose {
-    margin: 15rem 15rem ;
+    margin: 2rem 7rem;
     text-align: center;
+}
+
+.compose h1{
+    font-weight: 400;
+    font-size: 2rem;
+    margin: 1rem 1.2rem;
+    padding: 8px 12px;
 }
 
 .compose input {
@@ -21,7 +28,7 @@
   }
   
 .compose button {
-    width: 7%;
+    width: 50%;
     padding: 8px;
     margin: 3rem 0 3rem 0;
     border: none;

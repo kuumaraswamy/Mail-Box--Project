@@ -7,9 +7,12 @@ import classes from './SingleMail.module.css';
 const SingleMail = (props) => {
     const dispatch = useDispatch();
     const mails = useSelector(state => state.compose.fetchMail);
+    
     const userMailId = localStorage.getItem('email');
     const singleMailKey = props.mailDetails.singleMail;
     dispatch(composeActions.ReadMail(singleMailKey));
+    
+    console.log(`inside single email`,singleMailKey)
 
     useEffect(() => {
         const userMail = userMailId.split('.').join('');
@@ -18,7 +21,7 @@ const SingleMail = (props) => {
         const readMail = async () => {
             try {
                 const res = await axios.put(
-                `https://mail-box-ef030-default-rtdb.firebaseio.com//${userMail}/${singleMailKey}.json`,
+                `https://mail-box-ef030-default-rtdb.firebaseio.com/${userMail}/${singleMailKey}.json`,
                 mails[singleMailKey]
                 )
                 console.log(res);
