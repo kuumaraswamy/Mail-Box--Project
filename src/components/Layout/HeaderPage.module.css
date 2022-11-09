@@ -70,3 +70,41 @@
     background: #1b435e;
     }
   
+
+
+
+/* vertical Nav */
+
+
+.header {
+   width: 150px;
+   height: 100%;
+   box-sizing: border-box;
+   background-color: #FFFAF0;
+   position: fixed;
+   top: 85px;
+   left: 0px;
+   padding: 70px 0px 0px 0px;
+ }
+ 
+ header button {
+   float: left;
+   margin:  2rem 2rem ;
+   color: black;
+   font-family: 'Meddon', cursive;
+   align-items: center;
+ }
+ 
+ header nav ul {
+   height: 70px;
+   float: right;
+   color: #28597a;
+ }
+ 
+ header nav ul li {
+   width: 200px;
+   height: 70px;
+   float: left;
+   display: block;
+   color: #28597a;
+ }

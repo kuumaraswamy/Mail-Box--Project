@@ -28,7 +28,9 @@ const HeaderPage = () => {
           color='white'
           bg='#FFFAF0'
           border-color='1px solid black'
-          alignItems='center'>
+          alignItems='center'
+       
+          >
             <div className={classes.img}>
             <img src={logo} width="50" height="50" alt=""></img>
             </div>
@@ -43,13 +45,26 @@ const HeaderPage = () => {
            { isLogin && <button mr={50} className={classes.button} onClick={()=>history.push('./SentMails')}> Sent Mails </button>}
             { isLogin && <button mr={50} className={classes.button} onClick={logoutHandler} > Logout </button>}
          
-      
       </Flex> 
-    
 
-    
-     
+      
+      {/* <div ng-controller="PortalController" className={classes.header}>
+          <header>
+      
+          
+             <button  mr={50} className={classes.button} onClick={()=>history.push('./Home')} > Home </button>
+             <button  mr={50} className={classes.button} onClick={()=>history.push('./Home')} > Compose </button>
+             <button  mr={50} className={classes.button} onClick={()=>history.push('./Home')} >Inbox </button>
+             <button  mr={50} className={classes.button} onClick={()=>history.push('./Home')} > SentMails </button>
+             <button  mr={50} className={classes.button} onClick={()=>history.push('./Home')} > LogOut</button>
+              
+              
+          </header>
+     </div> */}
+      
+
     </div>
+    
   )
 }
 
