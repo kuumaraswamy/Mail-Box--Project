@@ -1,4 +1,4 @@
-// import {useContext} from 'react'
+import {useState,useEffect} from 'react'
 import { useHistory, } from 'react-router';
 import { useSelector, useDispatch } from 'react-redux';
 import { authActions } from '../../Store/auth-reducer';
@@ -6,6 +6,7 @@ import { Flex,Text,Box,button} from 'rebass'
 // import AuthContext from '../../Store/auth-context'
 import classes from "./HeaderPage.module.css"
 import logo from '../../email.png'
+import { Badge } from 'antd';
 
 
 
@@ -13,13 +14,28 @@ import logo from '../../email.png'
 
 const HeaderPage = () => {
   const isLogin = useSelector((state) => state.authentication.isLogin)
+  const inboxMails = useSelector(state => state.compose.fetchMail);
+  const [unreadCount, setUnreadCount] = useState(0);
     console.log(isLogin, "in header");
     const dispatch = useDispatch()
+
   //  const authCntx = useContext(AuthContext)
    const history = useHistory();
   const logoutHandler = () =>{
     dispatch(authActions.logout());
   }
+
+  useEffect(() => {
+    if (inboxMails) {
+      // eslint-disable-next-line
+      Object.keys(inboxMails).map((mail) => {
+            if (inboxMails[mail].read === false) {
+          setUnreadCount(unreadCount + 1);
+        }
+      });
+    }
+  // eslint-disable-next-line
+  }, [inboxMails]);
   
   return (
     <div >
@@ -41,7 +57,14 @@ const HeaderPage = () => {
           { !isLogin &&<button  mr={50} className={classes.button} onClick={()=>history.push('./LoginAuth')} > Login </button>}
           {isLogin && <button  mr={50} className={classes.button} onClick={()=>history.push('./Home')} > Home </button>}
            {isLogin && <button mr={50} className={classes.button}onClick={()=>history.push('./Compose')}> Compose </button>}
-           { isLogin && <button mr={50} className={classes.button} onClick={()=>history.push('./Inbox')}> Inbox </button>}
+           { isLogin && <button mr={50} className={classes.button} onClick={()=>history.push('./Inbox')}> Inbox 
+                      {unreadCount === 0 ? (
+                                <></>
+                              ) : (
+                                <span>{unreadCount} Unread</span>
+                              )}
+                  </button>
+                  }
            { isLogin && <button mr={50} className={classes.button} onClick={()=>history.push('./SentMails')}> Sent Mails </button>}
             { isLogin && <button mr={50} className={classes.button} onClick={logoutHandler} > Logout </button>}
          

@@ -69,6 +69,17 @@
     border-top-color: #1b435e;
     background: #1b435e;
     }
+    .button span {
+      position: absolute;
+      top: -12px;
+      right: -30px;
+      padding: 5px 10px;
+      font-size: 10px;
+      border-radius: 30px;
+      color: white;
+      background-color: red;
+      z-index: 32;
+    }
   
 
 
