@@ -16,7 +16,7 @@ const ComposeSlice = createSlice({
             state.fetchMail = action.payload
         },
         ReadMail(state, action){
-            state.fetchMail[action.payload].read = false
+            state.fetchMail[action.payload].read = true;
         },
         sentMail(state, action){
             state.fetchMail = action.payload

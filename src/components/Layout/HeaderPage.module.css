@@ -75,9 +75,10 @@
     border-top-color: #1b435e;
     background: #1b435e;
     }
-     .badge {
+
+   .badge {
       position: absolute;
-      top: -12px;
+      top: -16px;
       right: -30px;
       padding: 5px 10px;
       font-size: 10px;
@@ -87,13 +88,23 @@
       z-index: 32;
     }
   
-
-
-
+   .span {
+      position:absolute;
+      top: 16px;
+      right:450px;
+      padding: -15px -20px;
+      background-color: rgb(169, 169, 176);
+      border-radius:100px solid blue;
+      color:blue;
+      border-radius: 30px;
+      width:5%;
+    
+      
+   }
 /* vertical Nav */
 
 
-.header {
+/* .header {
    width: 150px;
    height: 100%;
    box-sizing: border-box;
@@ -124,4 +135,4 @@
    float: left;
    display: block;
    color: #28597a;
- }
+ } */

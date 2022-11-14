@@ -1,4 +1,4 @@
-import {useState,useEffect} from 'react'
+import {useState,useEffect,  Fragment} from 'react'
 import { useHistory, } from 'react-router';
 import { useSelector, useDispatch } from 'react-redux';
 import { authActions } from '../../Store/auth-reducer';
@@ -15,7 +15,7 @@ const HeaderPage = () => {
   const isLogin = useSelector((state) => state.authentication.isLogin)
   const inboxMails = useSelector((state) => state.compose.fetchMail);
   
-    // console.log(isLogin, "in header");
+
     const dispatch = useDispatch()
     const history = useHistory();
     const [unreadCount, setUnreadCount] = useState(0);
@@ -23,6 +23,9 @@ const HeaderPage = () => {
   const logoutHandler = () =>{
     dispatch(authActions.logout());
   }
+
+  
+ 
 
   useEffect(() => {
     if (inboxMails) {
@@ -34,16 +37,15 @@ const HeaderPage = () => {
               console.log(count);
               setUnreadCount(count);
         }
-        
       });
       
     }
     
-  // eslint-disable-next-line
   }, [inboxMails]);
-  
+
+    
   return (
-    <div >
+    <Fragment >
       <Flex
           px={100}
           color='white'
@@ -66,7 +68,7 @@ const HeaderPage = () => {
                   {unreadCount === 0 ? (
                             <></>
                           ) : (
-                            <span>{unreadCount} Unread</span>
+                            <span className={classes.span}>{unreadCount} Unread</span>
                           )}
                   </button>
                   }
@@ -77,10 +79,10 @@ const HeaderPage = () => {
 
       
 
-    </div>
+    </Fragment>
     
   )
 }
 
 
-export default HeaderPage;
+export default  HeaderPage;
