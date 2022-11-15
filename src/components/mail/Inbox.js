@@ -1,3 +1,4 @@
+
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -16,7 +17,7 @@ const Inbox = () => {
     const fetchMails = async () => {
         try {
             const res = await axios.get(
-            `https://mail-box-ef030-default-rtdb.firebaseio.com/${userMail}.json`
+              `https://mail-box-ef030-default-rtdb.firebaseio.com/${userMail}.json`
             );
             console.log(res);
             dispatch(composeActions.fetchMail(res.data))
@@ -41,7 +42,7 @@ const Inbox = () => {
         console.log(mail);
         try {
             const res = await axios.delete(
-            `https://mail-box-ef030-default-rtdb.firebaseio.com/${userMail}/${mail}.json`
+              `https://mail-box-ef030-default-rtdb.firebaseio.com/${userMail}/${mail}.json`
             );
             console.log(res);
             fetchMails();

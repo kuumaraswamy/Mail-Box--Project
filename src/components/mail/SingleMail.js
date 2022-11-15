@@ -5,16 +5,19 @@ import { composeActions } from "../../Store/compose-reducer";
 import classes from './SingleMail.module.css';
 
 const SingleMail = (props) => {
+  
     const dispatch = useDispatch();
     const mails = useSelector(state => state.compose.fetchMail);
     
     const userMailId = localStorage.getItem('email');
     const singleMailKey = props.mailDetails.singleMail;
-    dispatch(composeActions.ReadMail(singleMailKey));
+   
+    //  const dispatch= dispatch(composeActions.ReadMail(singleMailKey));
     
-    console.log(`inside single email`,singleMailKey)
+    // console.log(`inside single email`,singleMailKey)
 
     useEffect(() => {
+        dispatch(composeActions.ReadMail(singleMailKey));
         const userMail = userMailId.split('.').join('');
         console.log(userMail);
 
@@ -31,7 +34,7 @@ const SingleMail = (props) => {
             }
         }
         readMail();
-    }, [userMailId, mails, singleMailKey]);
+    },[userMailId, mails, singleMailKey,dispatch]);
 
     return (
         <section className={classes['single-mail']}>

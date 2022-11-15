@@ -16,6 +16,9 @@ const ComposeSlice = createSlice({
             state.fetchMail = action.payload
         },
         ReadMail(state, action){
+            
+            console.log("inside read mail reducer", state.fetchMail)
+            
             state.fetchMail[action.payload].read = true;
         },
         sentMail(state, action){
